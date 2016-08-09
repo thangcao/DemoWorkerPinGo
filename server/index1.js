@@ -28,10 +28,10 @@ io.on('connection', function(client) {
         io.emit("newTicketForCategoryA", ticket)
         console.log("Create new ticket: " + ticket["userName"])
         console.log("applyTicket-" + title)
-        clientSocket.on("applyTicket-" + title, function(workerName) {
-            console.log("ApplyTicket")
-            io.emit("newWorker-" + title, workerName)
-        });
-    });
 
+    });
+    clientSocket.on("applyTicket", function(workerName) {
+        console.log("ApplyTicket")
+        io.emit("newWorker", workerName)
+    });
 });
